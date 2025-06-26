@@ -1,0 +1,50 @@
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+#source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+#RF_LAN
+auto eno8403
+#iface eno8403 inet dhcp
+iface eno8403 inet static
+      address 172.31.19.38
+      netmask 255.255.255.0
+      gateway 172.31.19.254
+#     up route add -net 172.22.229.5 netmask 255.255.255.0 gw 172.31.19.254
+#     up route add -net 192.168.10.15 netmask 255.255.255.0 gw 172.31.19.254
+
+# HIGHP
+auto eno8303
+iface eno8303 inet static
+       #address 192.168.8.3 
+       #netmask 255.255.255.0
+
+# MNT
+auto eno12399
+iface eno12399 inet static
+       #address 172.120.1.63
+       #netmask 255.255.255.0
+
+#VMH        
+auto eno12409
+iface eno12409 inet static
+       address 192.168.5.3
+       netmask 255.255.255.0
+
+
+#RT
+auto eno12419
+iface eno12419 inet static
+       address 192.168.4.3
+       netmask 255.255.255.0    
+
+#   DDS   
+auto eno12429
+iface eno12429 inet static
+       #address  192.168.9.3
+       #netmask 255.255.255.0    
