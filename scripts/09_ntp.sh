@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+# shellcheck source=../scripts/common.sh
 source "$(dirname "$0")/../scripts/common.sh"
 
 log() {
@@ -13,7 +14,7 @@ apt install -y ntp ntpdate
 
 # Backup and apply ntp.conf
 mv /etc/ntp.conf "$backup_path"/ntp.conf
-cp ""$resources_path""/ntp.conf /etc
+cp "$resources_path"/ntp.conf /etc
 
 /etc/init.d/ntp restart
 

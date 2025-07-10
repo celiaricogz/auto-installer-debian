@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+# shellcheck source=../scripts/common.sh
 source "$(dirname "$0")/../scripts/common.sh"
 
 log() {
@@ -9,6 +10,5 @@ log() {
 
 log "Preparing installation environment..."
 
-mkdir -p ""$backup_path"" """"$flags_path""""
 crontab -r || true
 
