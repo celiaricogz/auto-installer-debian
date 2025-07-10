@@ -1,51 +1,53 @@
-# ⚙️ Instalador automático para sistemas Debian y Ubuntu
+# Automatic Installer for Debian-based Systems
 
-Este proyecto proporciona un sistema de instalación desatendida y automatizada para sistemas basados en Debian, como Debian 11/12 y Ubuntu. Permite instalar fácilmente paquetes esenciales, aplicar configuraciones del sistema y generar un log del proceso.
+This project provides a modular and automated installer for Debian and Ubuntu systems. It allows unattended environment setup through Bash scripts organized by phases.
 
-> 🛠️ Proyecto personal en uso real, diseñado para automatizar y facilitar la configuración de entornos Linux. En proceso de desarrollo activo.
-
----
-
-## 🚀 ¿Qué hace este instalador?
-
-- Lee un listado de paquetes desde un archivo `.txt` personalizado
-- Instala los paquetes usando `apt`
-- Aplica configuraciones del sistema desde ficheros de recursos
-- Genera un log con el estado del proceso de instalación
-- Pensado para facilitar despliegues rápidos y homogéneos
+> Developed as a personal tool to automate and standardize deployments on real systems.
 
 ---
 
-## 📁 Estructura del proyecto
+## Features
+
+- Modular installation based on Bash
+- Package list defined in a `.txt` file
+- System configuration applied from templates
+- Detailed logs for each phase of the process
+- Easily extensible and adaptable
+
+---
+
+## Project Structure
 
 ```
-.
-├── src/
-│   ├── debian-installation.sh        # Script principal de instalación
-│   ├── packages-installation.sh      # Script auxiliar para gestionar instalación por lotes
-│   └── resources/
-│       └── pkgs-list.txt             # Lista de paquetes a instalar
-├── resources/
-│   ├── sshd_config, ntp.conf, fstab  # Configuraciones opcionales
-├── packages/
-│   ├── gcc  # Paquetes que se necesiten añadir de manera local
-├── LOG/                              # Carpeta de logs generados
-├── backup-files/                     # Backups opcionales (vacío por defecto)
-└── README.md
+auto-installer-debian/
+├── install.sh                  # Main entry point
+├── scripts/                    # Modular scripts (executed in order)
+│   ├── 01_prepare.sh
+│   ├── 02_update_sources.sh
+│   ├── ...
+├── config/                     # Configuration files
+│   ├── sources.list
+│   └── pkgs-list.txt
+├── resources/                  # System templates and configurations
+├── backup/                     # Automatic backups
+├── logs/                       # Log files per execution
+├── test/                       # Testing scripts
+├── docker/                     # Dockerfile and test environment
+└── .github/workflows/          # Shellcheck linter (CI)
 ```
 
 ---
 
-## 🧪 Cómo usar
+## How to Use
 
-1. Clona el repositorio:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/celiaricogz/auto-installer-debian.git
 cd auto-installer-debian
 ```
 
-2. Añade o edita el archivo de paquetes en `src/resources/pkgs-list.txt`:
+2. Edit the package list in `config/pkgs-list.txt`:
 
 ```txt
 htop
@@ -54,51 +56,88 @@ vim
 git
 ```
 
-3. Edita los archivos contenidos en `resources` con la configuración especifica que se busque.
+3. Review or adapt the configuration files in `resources/`.
 
-4. Ejecuta el script principal como `root` o con `sudo`:
+4. Run the main script as root:
 
 ```bash
-sudo bash src/debian-installation.sh
+sudo bash install.sh
 ```
 
 ---
 
-## 🧠 ¿Para qué usarlo?
+## Using the Makefile
 
-- Automatizar el setup de máquinas virtuales o físicas
-- Estandarizar entornos de trabajo
-- Acelerar despliegues en entornos de testing
-- Generar entornos reproducibles y fácilmente documentables
+This repository includes a `Makefile` to simplify common tasks:
+
+```bash
+make run      # Runs the main installer
+make test     # Launches the basic structure test
+make lint     # Runs shellcheck on all Bash scripts
+make logs     # Shows the latest generated logs
+make clean    # Removes generated logs and backups
+```
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## Testing and Continuous Integration
+
+The `test/basic_test.sh` script validates the minimum project structure (scripts present, executables, etc.).
+
+Additionally, the repository includes a GitHub Actions workflow that automatically runs `shellcheck` on every `push` to ensure Bash code quality.
+
+---
+
+## Test Environment with Docker
+
+To validate the installation without affecting your real system, you can use the included `Dockerfile`:
+
+```bash
+cd docker
+docker build -t auto-installer .
+docker run -it --rm auto-installer
+```
+
+This creates a Debian environment where you can run the installation scripts in isolation.
+
+---
+
+## Why Use It?
+
+- Standardize machine configuration
+- Avoid manual errors and save time
+- Facilitate maintenance of reproducible environments
+- Automate development or testing environments
+
+---
+
+## Technologies Used
 
 - Bash scripting
-- APT package manager
-- Logs personalizados
-- Configuración modular de sistema
+- APT (Advanced Package Tool)
+- Logging with timestamp
+- Modular execution by phases
+- GitHub Actions for quality control
+- Docker for environment testing
 
 ---
 
-## 🧩 Próximas mejoras
+## Upcoming Improvements
 
-- [ ] Soporte para RHEL, CentOS, Arch
-- [ ] Detección de distro
-- [ ] Opción de desinstalación/reversión
-- [ ] Interfaz interactiva tipo `whiptail`
-- [ ] Parámetros vía línea de comandos
+- [ ] Support for other distributions (RHEL, Arch)
+- [ ] Automatic OS detection
+- [ ] Uninstall function
+- [ ] Interactive interface (`whiptail`)
+- [ ] Command-line parameter support
 
 ---
 
-## 👩‍💻 Autora
+## Author
 
 **Celia Rico Gutiérrez**  
-Ingeniera DevOps & Fullstack especializada en automatización, scripting y sistemas Linux.  
+DevOps Engineer at Indra Simulación | Linux Automation | Infrastructure as Code  
 🔗 [LinkedIn](https://www.linkedin.com/in/celiaricogutierrez) | [Malt](https://www.malt.es/profile/celiaricogutierrez)
 
 ---
 
-📅 _Última actualización: Junio 2025_
-
+_Last update: July 2025_
