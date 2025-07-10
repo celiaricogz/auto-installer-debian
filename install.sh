@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+# shellcheck source=scripts/common.sh
+source "$(dirname "$0")/../scripts/common.sh"
+
 current_path="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 flag_file="$current_path/flags/state"
 
