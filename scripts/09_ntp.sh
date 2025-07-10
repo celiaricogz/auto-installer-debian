@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# shellcheck source=../scripts/common.sh
+# shellcheck source=scripts/common.sh
 source "$(dirname "$0")/../scripts/common.sh"
 
 log() {
@@ -13,7 +13,10 @@ log "Installing and configuring NTP"
 apt install -y ntp ntpdate
 
 # Backup and apply ntp.conf
+# shellcheck disable=SC2154
 mv /etc/ntp.conf "$backup_path"/ntp.conf
+
+# shellcheck disable=SC2154
 cp "$resources_path"/ntp.conf /etc
 
 /etc/init.d/ntp restart

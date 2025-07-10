@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# shellcheck source=../scripts/common.sh
+# shellcheck source=scripts/common.sh
 source "$(dirname "$0")/../scripts/common.sh"
 
 log() {
@@ -10,8 +10,10 @@ log() {
 
 log "Configuring network interfaces"
 
-# Backup and apply interfaces file
+# shellcheck disable=SC2154
 mv /etc/network/interfaces "$backup_path"/interfaces
+
+# shellcheck disable=SC2154
 cp "$resources_path"/interfaces /etc/network/interfaces
 
 chmod 777 /etc/network/interfaces
