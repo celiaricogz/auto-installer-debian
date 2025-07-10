@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# shellcheck source=../scripts/common.sh
+# shellcheck source=scripts/common.sh
 source "$(dirname "$0")/../scripts/common.sh"
 
 log() {
@@ -12,6 +12,7 @@ log "Installing Octave and related packages"
 
 apt install -y octave liboctave-dev
 
+# shellcheck disable=SC2154
 octave --eval "
 pkg install "$resources_path"/octave_packages/control-3.2.0.tar.gz;
 pkg install "$resources_path"/octave_packages/io-2.4.13.tar.gz;
