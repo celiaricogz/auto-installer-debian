@@ -12,11 +12,12 @@ log "Installing NVIDIA drivers..."
 
 apt install -y nvidia-driver firmware-misc-nonfree
 
-if ! lsmod | grep -q nvidia; then
-    modprobe nvidia && log "NVIDIA module loaded successfully" || log "Failed to load NVIDIA module"
+if modprobe nvidia; then
+    log "NVIDIA module loaded successfully"
 else
-    log "NVIDIA module was already loaded"
+    log "Failed to load NVIDIA module"
 fi
+
 
 apt install --reinstall -y nvidia-kernel-dkms
 cp "$resources_path"/dkms.conf /var/lib/dkms/nvidia-current/470.256.02/source/
