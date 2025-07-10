@@ -22,4 +22,5 @@ jobs:
 
       - name: Run ShellCheck
         run: |
-          find . -type f -name "*.sh" -exec shellcheck {} +
+          find . -type f -name "*.sh" -exec shellcheck -x {} +
+

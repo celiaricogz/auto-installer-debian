@@ -10,8 +10,8 @@ log() {
 log "Configuring network interfaces"
 
 # Backup and apply interfaces file
-mv /etc/network/interfaces $backup_path/interfaces
-cp $resources_path/interfaces /etc/network/interfaces
+mv /etc/network/interfaces "$backup_path"/interfaces
+cp ""$resources_path""/interfaces /etc/network/interfaces
 
 chmod 777 /etc/network/interfaces
 

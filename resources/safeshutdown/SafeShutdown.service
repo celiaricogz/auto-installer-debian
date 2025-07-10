@@ -1,6 +1,0 @@
-[Unit]
-After=network.service
-[Service]
-ExecStart=/usr/sbin/safeshutdown-wrapped.sh
-[Install]
-WantedBy=default.target

@@ -12,8 +12,8 @@ log "Installing and configuring NTP"
 apt install -y ntp ntpdate
 
 # Backup and apply ntp.conf
-mv /etc/ntp.conf $backup_path/ntp.conf
-cp $resources_path/ntp.conf /etc
+mv /etc/ntp.conf "$backup_path"/ntp.conf
+cp ""$resources_path""/ntp.conf /etc
 
 /etc/init.d/ntp restart
 

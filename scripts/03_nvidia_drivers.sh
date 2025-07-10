@@ -18,6 +18,6 @@ else
 fi
 
 apt install --reinstall -y nvidia-kernel-dkms
-cp $resources_path/dkms.conf /var/lib/dkms/nvidia-current/470.256.02/source/
+cp ""$resources_path""/dkms.conf /var/lib/dkms/nvidia-current/470.256.02/source/
 export IGNORE_PREEMPT_RT_PRESENCE=1
 dpkg-reconfigure nvidia-kernel-dkms

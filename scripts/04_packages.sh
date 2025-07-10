@@ -7,7 +7,7 @@ log() {
     echo "$(date +'%Y-%m-%d %H:%M:%S') - $1"
 }
 
-PACKAGES_FILE="$config_path/pkgs-list.txt"
+PACKAGES_FILE=""$config_path"/pkgs-list.txt"
 log "Installing packages from list: $PACKAGES_FILE"
 
 mapfile -t packages < <(grep -vE '^\s*#|^\s*$' "$PACKAGES_FILE")
