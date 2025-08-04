@@ -135,9 +135,12 @@ This creates a Debian environment where you can run the installation scripts in 
 ## Author
 
 **Celia Rico Gutiérrez**  
-DevOps Engineer at Indra Simulación | Linux Automation | Infrastructure as Code  
-🔗 [LinkedIn](https://www.linkedin.com/in/celiaricogutierrez) | [Malt](https://www.malt.es/profile/celiaricogutierrez)
+DevOps Engineer — Dockerized delivery, modular architecture, CI/CD pipelines 
+
+[<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn Logo" width="35" style="vertical-align:middle; margin-right:8px;"/>](https://www.linkedin.com/in/celiaricogutierrez)
+[<img src="https://play-lh.googleusercontent.com/1r1DdWXDT9K7D2yBwPkVyXQFEjLL0cMrR6SxBvcNXXwpi8aZN0ZKS61CVdtvK6pmpg" alt="Malt Logo" width="35" style="vertical-align:middle; margin-right:8px;"/>](https://www.malt.es/profile/celiaricogutierrez)
+[<img src="https://images.icon-icons.com/3781/PNG/512/upwork_icon_231982.png" alt="Malt Logo" width="35" style="vertical-align:middle;"/>](https://www.upwork.com/freelancers/~01898dfb872ff48b7a?mp_source=share)
 
 ---
 
-_Last update: July 2025_
+_\~Last updated: August 2025\~_
